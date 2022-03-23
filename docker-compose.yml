@@ -1,0 +1,31 @@
+version: '2'
+services:
+  kb-postgres:
+    image: "postgres:latest"
+    environment:
+      - "POSTGRES_USER=demo"
+      - "POSTGRES_PASSWORD=pass"
+      - "POSTGRES_DB=demo"
+    ports:
+      - 5432:5432
+  kb-ktor-cio:
+    build: ktor
+    container_name: kb-ktor-cio
+    ports:
+      - "8081:8081"
+    environment:
+      DATASOURCE_URL: "jdbc:postgresql://host.docker.internal:5432/demo"
+  kb-spring:
+    build: spring
+    container_name: kb-spring
+    ports:
+      - "8084:8084"
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://host.docker.internal:5432/demo"
+  kb-vertx:
+    build: vertx
+    container_name: kb-vertx
+    ports:
+      - "8087:8087"
+    environment:
+      DB_URL: "jdbc:postgresql://host.docker.internal:5432/demo"

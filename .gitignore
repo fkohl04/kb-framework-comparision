@@ -1,0 +1,6 @@
+/vertx/build/
+/spring/build/
+/ktor/build/
+/build/
+/.gradle/
+/.idea/

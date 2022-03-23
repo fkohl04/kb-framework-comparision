@@ -1,0 +1,30 @@
+server:
+  port: 8084
+  tomcat:
+    mbeanregistry:
+      enabled: true
+
+third.party.server.url: "https://random-data-api.com/api/business_credit_card/random_card?size=2"
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/demo
+    driver-class-name: "org.postgresql.Driver"
+    username: demo
+    password: pass
+    hikari:
+      password: pass
+      username: demo
+
+  security.user:
+    name: "user"
+    password: "password"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus,health,info
+  endpoint:
+    prometheus:
+      enabled: true
